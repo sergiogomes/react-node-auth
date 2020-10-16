@@ -1,6 +1,9 @@
+const Authentication = require("./controllers/authentication");
+
 module.exports = (app) => {
   app.get("/", (req, res, next) => {
-    console.log("get");
-    res.send(["waterbodttle", "phone", "paper"]);
+    res.send("Hello there! Only authentication route is available.");
   });
+
+  app.post("/signup", Authentication.signup);
 };
