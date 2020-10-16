@@ -1,14 +1,19 @@
 // Main starting point
-const express = require("express");
-const http = require("http");
 const bodyParser = require("body-parser");
+const express = require("express");
 const morgan = require("morgan");
+const http = require("http");
+
+const router = require("./router");
 
 const app = express();
 
 // App setupt
-app.use(morgan("combined"));
+// Middlewares
+app.use(morgan("combined")); // log
 app.use(bodyParser.json({ type: "*/*" }));
+
+router(app);
 
 //Server setup
 const port = process.env.PORT || 3090;
