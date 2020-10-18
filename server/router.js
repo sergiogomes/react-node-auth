@@ -1,7 +1,12 @@
+const passport = require("passport");
+
 const Authentication = require("./controllers/authentication");
+const passportService = require("./services/passport");
+
+const requireAuth = passport.authenticate("jwt", { session: false });
 
 module.exports = (app) => {
-  app.get("/", (req, res, next) => {
+  app.get("/", requireAuth, (req, res, next) => {
     res.send("Hello there! Only authentication route is available.");
   });
 
