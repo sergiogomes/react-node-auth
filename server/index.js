@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 mongoose
   .connect(
     "mongodb+srv://admin:" +
-      process.env.MONGO_ATLAS_PW +
+      "OKNW0C5M74FvtyHC" + //process.env.MONGO_ATLAS_PW +
       "@cluster0-htpq3.mongodb.net/node-angular?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
   )

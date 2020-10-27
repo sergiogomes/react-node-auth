@@ -4,11 +4,13 @@ const Authentication = require("./controllers/authentication");
 const passportService = require("./services/passport");
 
 const requireAuth = passport.authenticate("jwt", { session: false });
+const requireSignin = passport.authenticate("local", { session: false });
 
 module.exports = (app) => {
   app.get("/", requireAuth, (req, res, next) => {
     res.send("Hello there! Only authentication route is available.");
   });
 
+  app.post("/signin", requireSignin, Authentication.signin);
   app.post("/signup", Authentication.signup);
 };
